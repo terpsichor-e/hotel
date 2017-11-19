@@ -11,6 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get( '/', 'PageController@home' )->name('home');
+
+Route::get('{page}/{subs?}', ['uses' => 'PageController@index'])
+     ->where(['page' => '^((?!admin).)*$', 'subs' => '.*']);
