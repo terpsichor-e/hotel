@@ -11,7 +11,9 @@
 |
 */
 
-Route::get( '/', 'PageController@home' )->name('home');
+Route::get( '/', 'PageController@home' )->name( 'home' );
 
-Route::get('{page}/{subs?}', ['uses' => 'PageController@index'])
-     ->where(['page' => '^((?!admin).)*$', 'subs' => '.*']);
+Route::get( '/lang/{lang}', 'PageController@switchLang')->name( 'lang.switch' );
+
+Route::get( '{page}/{subs?}', [ 'uses' => 'PageController@index' ] )
+     ->where( [ 'page' => '^((?!admin).)*$', 'subs' => '.*' ] );

@@ -7,22 +7,26 @@ use App\Page;
 class PageController extends Controller {
 
 	public function home() {
-		return $this->index('home');
+		return $this->index( 'home' );
 	}
 
-	public function index($slug)
-	{
-		$page = Page::findBySlug($slug);
+	public function index( $slug ) {
+		$page = Page::findBySlug( $slug );
 
-		if (!$page)
-		{
-			abort(404, 'Please go back to our <a href="'.url('').'">homepage</a>.');
+		if ( ! $page ) {
+			abort( 404, 'Please go back to our <a href="' . url( '' ) . '">homepage</a>.' );
 		}
 
 		$data['title'] = $page->title;
-		$data['page'] = $page->withFakes();
+		$data['page']  = $page->withFakes();
 
-		return view('pages.'.$page->template, $data);
+		return view( 'pages.' . $page->template, $data );
+	}
+
+	public function switchLang( $lang ) {
+		return redirect()
+			->back()
+			->withCookie( cookie()->make( 'locale', $lang ) );
 	}
 
 }

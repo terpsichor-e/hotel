@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Backpack\CRUD\ModelTraits\SpatieTranslatable\HasTranslations;
 use Backpack\PageManager\app\Models\Page as BasePage;
 
 /**
@@ -30,4 +31,7 @@ use Backpack\PageManager\app\Models\Page as BasePage;
  * @mixin \Eloquent
  */
 class Page extends BasePage {
+	use HasTranslations;
+
+	protected $translatable = ['content', 'title'];
 }

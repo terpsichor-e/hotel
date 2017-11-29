@@ -17,7 +17,7 @@ class CreatePagesTable extends Migration
             $table->increments('id');
             $table->string('template');
             $table->string('name');
-            $table->string('title');
+            $table->text('title');
             $table->string('slug');
             $table->text('content')->nullable();
             $table->text('extras')->nullable();

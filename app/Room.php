@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Backpack\CRUD\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -24,6 +25,10 @@ use Illuminate\Database\Eloquent\Model;
  * @mixin \Eloquent
  */
 class Room extends Model {
+	use CrudTrait;
+
+	const STATUS_AVAILABLE = 1;
+	const STATUS_DISABLED = 2;
 
 	protected $fillable = [
 		'title',
