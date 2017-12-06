@@ -81,11 +81,5 @@ $(() => {
     })
         .find('#room_class').trigger('change');
 
-    if (window.notifications !== undefined) {
-        for (let notification in window.notifications) {
-            // noinspection JSUnfilteredForInLoop
-            console.log(notification);
-            alertify.notify(notification.message, notification.type);
-        }
-    }
+
 });

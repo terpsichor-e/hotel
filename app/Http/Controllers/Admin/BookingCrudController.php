@@ -127,12 +127,14 @@ class BookingCrudController extends CrudController {
 		$this->crud->addField( [
 			'name'  => 'arrival_at',
 			'label' => 'Заезд',
-			'type'  => 'datetime',
+			'type'  => 'datetime_picker',
+            'datetime_picker_options' => ['format' => 'DD.MM.YYYY HH:mm', 'language' => 'ru']
 		] );
 		$this->crud->addField( [
 			'name'  => 'departure_at',
-			'label' => 'Объезд',
-			'type'  => 'datetime',
+			'label' => 'Выезд',
+            'type'  => 'datetime_picker',
+            'datetime_picker_options' => ['format' => 'DD.MM.YYYY HH:mm', 'language' => 'ru']
 		] );
 
 		// ------ CRUD FIELDS

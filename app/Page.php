@@ -38,7 +38,7 @@ use Traversable;
 class Page extends BasePage {
 	use HasTranslations;
 
-	protected $translatable = [ 'content', 'title' ];
+	protected $translatable = [ 'content', 'title', 'extras', 'intro_text' ];
 	protected $fillable = [ 'template', 'name', 'title', 'slug', 'content', 'image', 'extras' ];
 
 	public static function boot() {
