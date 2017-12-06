@@ -13,9 +13,7 @@ class PageController extends Controller {
 	public function index( $slug ) {
 		$page = Page::findBySlug( $slug );
 
-		if ( ! $page ) {
-			abort( 404, 'Please go back to our <a href="' . url( '' ) . '">homepage</a>.' );
-		}
+		abort_if( ! $page, 404, 'Please go back to our <a href="' . url( '' ) . '">homepage</a>.' );
 
 		$data['title'] = $page->title;
 		$data['page']  = $page->withFakes();

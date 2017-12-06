@@ -1,5 +1,7 @@
 <?php
 
-CRUD::resource('feature', 'FeatureCrudController');
-CRUD::resource('room/class', 'RoomClassCrudController');
-CRUD::resource('menu-item', 'MenuItemCrudController');
+CRUD::resource( 'room', 'RoomCrudController' );
+CRUD::resource( 'class', 'RoomClassCrudController' );
+CRUD::resource( 'feature', 'FeatureCrudController' );
+CRUD::resource( 'booking', 'BookingCrudController' );
+CRUD::resource( 'menu-item', 'MenuItemCrudController' );

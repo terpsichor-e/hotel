@@ -7,9 +7,9 @@ use App\RoomClass;
 class RoomController extends Controller {
 
 	public function index() {
-		$rooms = RoomClass::paginate();
+		$room_classes = RoomClass::active()->paginate();
 
-		return view( 'room.index', compact( 'rooms' ) );
+		return view( 'room.index', compact( 'room_classes' ) );
 	}
 
 	public function view( RoomClass $room_class ) {

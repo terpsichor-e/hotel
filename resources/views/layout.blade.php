@@ -1,9 +1,16 @@
 <!doctype html>
-<html>
+<html lang="{{ app()->getLocale() }}">
 <head>
     <title>@yield('title')</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     @yield('head')
+    @if(session()->has('notification'))
+        <script>
+            window.notifications = [{!! json_encode(session('notification')) !!}];
+            console.log(window.notifications);
+        </script>
+    @endif
 </head>
 <body class="@yield('body_class')">
 @yield('body_start')
@@ -50,6 +57,8 @@
         <div class="copyright">Hotel &laquo;H&raquo; &copy; 2017</div>
     </div>
 </footer>
+
+<script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
 @yield('body_end')
 </body>
 </html>

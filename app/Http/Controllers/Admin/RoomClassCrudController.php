@@ -4,28 +4,27 @@ namespace App\Http\Controllers\Admin;
 
 use App\RoomClass;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
+use Backpack\CRUD\app\Http\Requests\CrudRequest as StoreRequest;
+use Backpack\CRUD\app\Http\Requests\CrudRequest as UpdateRequest;
 
 // VALIDATION: change the requests to match your own file names if you need form validation
 
 class RoomClassCrudController extends CrudController {
 	public function setup() {
-
 		/*
 		|--------------------------------------------------------------------------
 		| BASIC CRUD INFORMATION
 		|--------------------------------------------------------------------------
 		*/
 		$this->crud->setModel( 'App\RoomClass' );
-		$this->crud->setRoute( config( 'backpack.base.route_prefix' ) . '/room/class' );
-		$this->crud->setEntityNameStrings( 'Класс номеров', 'Классы номеров' );
+		$this->crud->setRoute( config( 'backpack.base.route_prefix' ) . '/class' );
+		$this->crud->setEntityNameStrings( 'Категория', 'Категории' );
 
 		/*
 		|--------------------------------------------------------------------------
 		| BASIC CRUD INFORMATION
 		|--------------------------------------------------------------------------
 		*/
-
-		$this->crud->setFromDb();
 
 		$this->crud->addColumn( [
 			'name'  => 'title',
@@ -34,6 +33,12 @@ class RoomClassCrudController extends CrudController {
 		$this->crud->addColumn( [
 			'name'  => 'price',
 			'label' => 'Цена',
+		] );
+		$this->crud->addColumn( [
+			'name'          => 'room_count',
+			'label'         => 'Количество номеров свободных/занятых',
+			'type'          => 'model_function',
+			'function_name' => 'roomsCount',
 		] );
 		$this->crud->addColumn( [
 			'name'    => 'status',
@@ -63,6 +68,13 @@ class RoomClassCrudController extends CrudController {
 			'attribute' => 'title',
 			'model'     => 'App\Feature',
 			'pivot'     => true,
+		] );
+		$this->crud->addField( [
+			'name'   => 'photos',
+			'label'  => 'Фотографии',
+			'type'   => 'upload_multiple',
+			'upload' => true,
+			'disk'   => 'uploads',
 		] );
 		$this->crud->addField( [
 			'name'    => 'status',
@@ -138,5 +150,13 @@ class RoomClassCrudController extends CrudController {
 		// $this->crud->orderBy();
 		// $this->crud->groupBy();
 		// $this->crud->limit();
+	}
+
+	public function store( StoreRequest $request ) {
+		return parent::storeCrud( $request );
+	}
+
+	public function update( UpdateRequest $request ) {
+		return parent::updateCrud( $request );
 	}
 }

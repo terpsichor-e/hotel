@@ -12,7 +12,7 @@ class MenuItemCrudController extends CrudController {
 
 		$this->crud->setModel( "App\MenuItem" );
 		$this->crud->setRoute( config( 'backpack.base.route_prefix' ) . '/menu-item' );
-		$this->crud->setEntityNameStrings( 'пункт меню', 'пункты меню' );
+		$this->crud->setEntityNameStrings( 'Пункт Меню', 'Пункты Меню' );
 
 		$this->crud->allowAccess( 'reorder' );
 		$this->crud->enableReorder( 'name', 2 );

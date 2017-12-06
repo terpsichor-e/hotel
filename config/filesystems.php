@@ -64,8 +64,10 @@ return [
 		],
 
 		'uploads' => [
-			'driver' => 'local',
-			'root'   => public_path( 'uploads' ),
+			'driver'     => 'local',
+			'root'       => storage_path( 'app/public/uploads' ),
+			'url'        => env( 'APP_URL' ) . '/storage/uploads',
+			'visibility' => 'public',
 		],
 
 	],

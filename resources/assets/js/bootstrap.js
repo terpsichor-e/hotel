@@ -1,4 +1,3 @@
-
 window._ = require('lodash');
 
 /**
@@ -11,7 +10,8 @@ try {
     window.$ = window.jQuery = require('jquery');
 
     require('bootstrap-sass');
-} catch (e) {}
+} catch (e) {
+}
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -22,6 +22,12 @@ try {
 window.axios = require('axios');
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+
+window.moment = require('moment');
+
+window.alertify = require('alertifyjs');
+
+window.datetimepicker = require('eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker');
 
 /**
  * Next we will register the CSRF Token as a common header with Axios so that

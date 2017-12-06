@@ -1,0 +1,22 @@
+body.booking {
+    .booking-form {
+        margin: 50px 0;
+        .form-control {
+            resize: none;
+        }
+        .has-error {
+            .form-control-error {
+                position: absolute;
+                font-size: 0.8em;
+                right: 25px;
+                background: white;
+                padding: 1px 5px;
+                border-radius: 0 0 6px 6px;
+                bottom: 1px;
+                transform: translateY(100%);
+                border: 1px solid #a94442;
+                border-top-width: 0;
+            }
+        }
+    }
+}

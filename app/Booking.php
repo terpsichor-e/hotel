@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
  * App\Booking
  *
  * @property int $id
+ * @property string $hash
  * @property int $room_class_id
  * @property int|null $room_id
  * @property float $price
@@ -31,6 +32,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Booking whereClientWishes( $value )
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Booking whereCreatedAt( $value )
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Booking whereDepartureAt( $value )
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Booking whereHash( $value )
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Booking whereId( $value )
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Booking wherePrice( $value )
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Booking whereRoomClassId( $value )
@@ -47,11 +49,23 @@ class Booking extends Model {
 	const TYPE_PHONE = 2;
 	const TYPE_EMAIL = 3;
 	const TYPE_PERSONAL = 4;
+	const TYPES = [
+		self::TYPE_ONLINE   => 'Через сайт',
+		self::TYPE_PHONE    => 'По телефону',
+		self::TYPE_EMAIL    => 'По почте',
+		self::TYPE_PERSONAL => 'В отеле',
+	];
 
 	const STATUS_NEW = 1;
 	const STATUS_APPROVAL = 2;
 	const STATUS_CONFIRMED = 3;
 	const STATUS_CANCELED = 4;
+	const STATUSES = [
+		self::STATUS_NEW       => 'Новая заявка',
+		self::STATUS_APPROVAL  => 'Ожидает подтверждения',
+		self::STATUS_CONFIRMED => 'Подтверждена',
+		self::STATUS_CANCELED  => 'Отменена',
+	];
 
 	protected $fillable = [
 		'room_class_id',
@@ -66,6 +80,20 @@ class Booking extends Model {
 		'arrival_at',
 		'departure_at',
 	];
+
+	protected $dates = [
+		'arrival_at',
+		'departure_at',
+	];
+
+	public static function boot() {
+		parent::boot();
+		static::saving( function ( $booking ) {
+			if ( empty( $booking->hash ) ) {
+				$booking->hash = sha1( uniqid() );
+			}
+		} );
+	}
 
 	public function roomClass() {
 		return $this->belongsTo( 'App\RoomClass' );

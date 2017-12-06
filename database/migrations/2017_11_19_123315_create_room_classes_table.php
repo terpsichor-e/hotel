@@ -13,7 +13,7 @@ class CreateRoomClassesTable extends Migration {
 	public function up() {
 		Schema::create( 'room_classes', function ( Blueprint $table ) {
 			$table->increments( 'id' );
-			$table->integer( 'title' );
+			$table->text( 'title' );
 			$table->text( 'description' )
 			      ->nullable();
 			$table->decimal( 'price' )

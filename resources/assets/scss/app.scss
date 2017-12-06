@@ -1,6 +1,6 @@
 
 // Fonts
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700,800");
 
 // Variables
 @import "variables";
@@ -11,4 +11,16 @@
 // FontAwesome
 @import "~font-awesome-sass/assets/stylesheets/font-awesome";
 
+@import "~eonasdan-bootstrap-datetimepicker/src/sass/bootstrap-datetimepicker-build";
+
 @import "layout/default";
+
+@import "page/home";
+@import "page/default";
+
+@import "room/card";
+@import "room/view";
+
+@import "book/form";
+
+@import "feature/archive";
