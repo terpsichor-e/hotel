@@ -21,26 +21,10 @@ class MenuItemCrudController extends CrudController {
 			'name'  => 'name',
 			'label' => 'Надпись',
 		] );
-		$this->crud->addColumn( [
-			'label'     => 'Родительский пункт',
-			'type'      => 'select',
-			'name'      => 'parent_id',
-			'entity'    => 'parent',
-			'attribute' => 'name',
-			'model'     => "\App\MenuItem",
-		] );
 
 		$this->crud->addField( [
 			'name'  => 'name',
 			'label' => 'Надпись',
-		] );
-		$this->crud->addField( [
-			'label'     => 'Родительский пункт',
-			'type'      => 'select',
-			'name'      => 'parent_id',
-			'entity'    => 'parent',
-			'attribute' => 'name',
-			'model'     => "\App\MenuItem",
 		] );
 		$this->crud->addField( [
 			'name'       => 'type',

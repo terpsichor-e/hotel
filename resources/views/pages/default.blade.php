@@ -6,7 +6,7 @@
     <div class="intro small" style="background-image: url({{ $page->image }})">
         <div class="container">
             <div class="intro-content">
-                {!! $page->intro_text !!}
+                <h1>{!! $page->intro_text !!}</h1>
             </div>
         </div>
     </div>
